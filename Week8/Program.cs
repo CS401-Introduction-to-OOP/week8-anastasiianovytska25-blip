@@ -58,3 +58,23 @@ public class CargoContainer<T> where T : DeliveryItem
     
 }
 
+class Program
+{
+    static void Main(string[] args)
+    {
+      var item1 = new Letter("1", 0.2);
+      var item2 = new Letter("2", 0.3);
+      var item3 = new Parcel("3", 35, "30x20x15");
+      var item4 = new Parcel("4", 80,"40x10x25");
+      item1.PrintInfo();
+      item3.PrintInfo();
+      CargoContainer<DeliveryItem> myCargo = new CargoContainer<DeliveryItem>();
+      myCargo.AddItem(item1);
+      myCargo.AddItem(item2);
+      myCargo.AddItem(item3);
+      myCargo.AddItem(item4);
+      Console.WriteLine($"Total cost: {myCargo.GetTotalCost()}");
+
+    }
+}
+
