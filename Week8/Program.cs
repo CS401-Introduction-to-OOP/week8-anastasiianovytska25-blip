@@ -36,3 +36,25 @@ public  class Parcel(string TrackingNumber, double Weight, string Dimensions ) :
         Console.WriteLine($" Dimentsions : {Dimensions}");
     }
 }
+
+public class CargoContainer<T> where T : DeliveryItem
+{
+    private List<T> items = new List<T>();
+    public void AddItem(T item)
+    {
+        items.Add(item) ;
+        Console.WriteLine ($" Added : {item.TrackingNumber}" ) ;
+    }
+    public double GetTotalCost()
+    {
+       double res = 0; 
+        foreach (var item in items)
+        {
+            res += item.CalculateCost();
+        }
+
+        return res;
+    }
+    
+}
+
